@@ -1,0 +1,50 @@
+<HTML>
+	<HEAD>
+		<SCRIPT SRC="processing.js"></SCRIPT>
+	</HEAD>
+	<BODY>
+		<H1> Mini Project Example</H1>
+		<CANVAS ID="canvas1"></CANVAS>
+		<SCRIPT ID="script1" TYPE="text/javascript">
+
+		function sketchProc(processing){
+		processing.size(400,400);
+		var ceiling = processing.random(25,300);
+
+		var y = 25;
+
+		var step = 5;
+		processing.
+noStroke();
+
+		processing.draw= function() {
+   
+	 	processing.background(0,150,150);
+    
+		processing.fill(255, 0, 0);
+    
+		processing.ellipse(200,y,25,25);
+  
+		if (y === 380){
+      
+		step = -5;
+  
+		}
+  
+		else if(y < ceiling){
+      
+		step = 5;
+      
+		ceiling = processing.random(75,400);
+  
+		}
+  
+		y = y + step;
+};
+
+		}
+		var canvas = document.getElementById("canvas1");
+		var p = new Processing(canvas, sketchProc);
+		</SCRIPT>
+	</BODY>
+</HTML>

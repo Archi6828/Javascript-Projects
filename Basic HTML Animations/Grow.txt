@@ -1,0 +1,47 @@
+<HTML>
+	<HEAD>
+		<SCRIPT SRC="processing.js"></SCRIPT>
+	</HEAD>
+	<BODY>
+		<H1>Growing Animation</H1>
+		<CANVAS ID="canvas1"></CANVAS>
+		<SCRIPT ID="script1" TYPE="text/javascript">
+
+		function sketchProc(processing){
+		var s = 1;
+		var a = 160;
+		var b = 400;
+		var c = 55;
+		var d= 400;
+		processing.noStroke();
+		processing.size(400,400);
+		
+
+		processing.draw= function() {
+  		  processing.background(25, 40, 77);
+      
+  		  processing.fill(5, 140, 5);
+  		  processing.rect(0,280,500,500);
+   
+  		  processing.scale(s); 
+  		  processing.scale(1);
+    if(processing.__mousePressed && processing.mouseX > a && processing.mouseX < b && processing.mouseY > c && processing.mouseY < d){
+   		  a= a+1;
+  		  b= b+1;
+  		  c= c+1;
+  		  d=d+1;
+       		 s= s+0.01;
+   		 }
+   		processing.fill(40, 42, 64);
+   		processing.rect(160,55,40,50,10);
+   
+ 		processing.fill(255, 255, 255); 
+ 		processing.triangle(180,50,160,100,200,100);
+			processing.triangle(180,120,160,70,200,70);
+			};
+		}
+		var canvas = document.getElementById("canvas1");
+		var p = new Processing(canvas, sketchProc);
+		</SCRIPT>
+	</BODY>
+</HTML>

@@ -1,0 +1,55 @@
+<HTML>
+	<HEAD>
+		<SCRIPT SRC="processing.js"></SCRIPT>
+		<TITLE> Word Explosion!!</TITLE>
+	</HEAD>
+	<BODY>
+		<H1> Word Explosion!!</H1>
+		<CANVAS ID="canvas1"></CANVAS>
+		
+		<SCRIPT ID="script1" TYPE="text/javascript">
+
+			function sketchProc(processing){
+				processing.size(400,400);
+				var worda=0;
+				var wordb=200;
+				var wordc=400;
+				var c=380;
+				var x=0;
+				var step=5;
+
+				processing.draw= function() {
+  				processing.background(18, 235, 217);
+ 				var f = processing.createFont("fantasy", 100);
+				processing.textFont(f);
+				processing.fill(0, 255, 51);
+				processing.text("HOLA!!!!", worda,150);
+				processing.textFont(f,50);
+				processing.fill(255, 0, 21);
+				processing.text("HELLO!!!", wordb,200,200,50);
+				processing.fill(255, 255, 255);
+				processing.text("WINTER!!",c,wordc,200,50);
+				processing.fill(255, 153, 0);
+				processing.text("SUMMER!!",100,x,200,60);
+
+				if(x===400){
+ 				   step= -5;
+				}
+				else if(x===0){
+ 				   step=5;
+				}
+				x= x+step;
+
+				worda= worda+2;
+				wordb= wordb-5;
+				wordc= wordc-3;
+				c= c-4;
+				};
+			}
+			
+			var canvas = document.getElementById("canvas1")
+			var p = new Processing( canvas,sketchProc);
+			</SCRIPT>
+		</BODY>
+</HTML>
+

@@ -1,0 +1,71 @@
+<HTML>
+	<HEAD>
+		<SCRIPT SRC="processing.js"></SCRIPT>
+	</HEAD>
+	<BODY>
+		<H1>Joystick Animation</H1>
+		<CANVAS ID="canvas1"></CANVAS>
+		<SCRIPT ID="script1" TYPE="text/javascript">
+
+		function sketchProc(processing){
+		var y=200;
+		var x=200;
+		var a=220;
+		var b= 160;
+		var z= 220;
+		var m= 180;
+		var w= 270;
+		var c=250;
+		var d=290;
+		var e=160;
+		var h=350;
+		var g=390;
+
+		processing.size(400,400);
+		processing.draw = function(){
+		 processing.background(0, 0, 0);
+if(processing.__keyPressed && processing.keyCode === processing.UP){
+    y= y-2;
+    b= b-2;
+    z= z-2;
+    h= h-2;
+    g= g-2;
+ }
+else if(processing.__keyPressed && processing.keyCode === processing.DOWN){
+        y= y+2;
+        b= b+2;
+        z= z+2;
+        h= h+2;
+        g= g+2;
+ }
+else if(processing.__keyPressed && processing.keyCode === processing.RIGHT){
+   x= x+2;
+   a= a+2;
+   m= m+2;
+   w= w+2;
+   c= c+2;
+   d= d+2;
+   e= e+2;
+}
+else if(processing.__keyPressed && processing.keyCode === processing.LEFT){
+   x= x-2;
+   a= a-2;
+   m= m-2;
+   w= w-2;
+   c= c-2;
+   d= d-2;
+   e= e-2;
+}
+     processing.fill(165, 32, 191);
+     processing.rect(x,y,50,150,10);
+     processing.fill(170, 0, 255);
+     processing.triangle(a,b,m,z,w,z);
+     processing.fill(162, 0, 255);
+     processing.quad(x,h,c,h,d,g,e,g);
+};
+		}
+		var canvas = document.getElementById("canvas1");
+		var p = new Processing(canvas, sketchProc);
+		</SCRIPT>
+	</BODY>
+</HTML>

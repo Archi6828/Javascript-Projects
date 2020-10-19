@@ -1,0 +1,174 @@
+<HTML>
+	<HEAD>
+		<SCRIPT SRC="processing.js"></SCRIPT>
+	</HEAD>
+	<BODY>
+		<H1>Timed Animation</H1>
+		<CANVAS ID="canvas1"></CANVAS>
+		<SCRIPT ID="script1" TYPE="text/javascript">
+
+		function sketchProc(processing){
+		processing.noStroke();
+var redY=25;
+var stepRed=5;
+var yellowY=25;
+var stepYellow=5;
+var purpleY=150;
+var stepPurple=5;
+var greenX=0;
+var stepGreen=5;
+var lightpX= 10;
+var stepLightp=5;
+var grayX=380;
+var stepGray=5;
+var grayY = 15;
+var stepGrey=5;
+var orangeX=0;
+var stepOrange=5;
+var orangeY=15;
+var stepOrenge=5;
+var tealY=50;
+var stepTeal=5;
+
+var startSec= second();
+ var m =millis();
+    processing.time= second() - startSec;
+
+		processing.size(400,400);
+		processing.draw = function(){
+		 processing.background(0, 0, 0);
+    processing.fill(255, 0, 94);
+    processing.ellipse(150,redY,25,25);
+    
+    processing.fill(255, 204, 0);
+    processing.rect(13,yellowY,25,25);
+    
+   processing.fill(0, 255, 170);
+    processing.rect(350,tealY,10,30,2);
+    
+   processing.fill(102, 0, 255);
+    processing.rect(250,purpleY,30,30,10);
+    
+    processing.fill(13, 255, 0);
+    processing.ellipse(greenX,150,50,60);
+    
+    processing.fill(185, 98, 199);
+    processing.rect(lightpX,380,60,20,5);
+    
+    processing.fill(158, 152, 152);
+    processing.ellipse(grayX,grayY,20,20);
+    
+    processing.fill(252, 119, 3);
+    processing.ellipse(orangeX,orangeY,20,20);
+    
+    if(tealY===400){
+        stepTeal=-5;
+    }
+    else if(tealY===0){
+        stepTeal=5;
+    }
+    
+   if(orangeX===400){
+        stepOrange= -5;
+    }
+    else if(orangeX===0){
+        stepOrange= 5;
+    }
+    
+    if(orangeY===400){
+        stepOrenge=-5;
+    }
+    else if(orangeY===0){
+        stepOrenge=5;
+    }
+ 
+    if(grayX===400){
+        stepGray= -5;
+    }
+   else if(grayX===0){
+        stepGray= 5;
+    }
+    
+    if(grayY===400){
+        stepGrey=-5;
+    }
+    else if(grayY===0){
+        stepGrey=5;
+    }
+    if(lightpX===350){
+        stepLightp= -5;
+    }
+    else if(lightpX===10){
+        stepLightp= 5;
+    }
+    
+    if(greenX===400){
+        stepGreen= -5;
+    }
+    else if(greenX===0){
+        stepGreen= 5;
+    }
+    
+    if(purpleY===400){
+        stepPurple= -5;
+    }
+    else if(purpleY===150){
+        stepPurple= 5;
+    }
+    
+    if(redY===400){
+        stepRed= -5;
+    }
+    else if (redY===25){
+        stepRed=5;
+    }
+    
+    if(yellowY===400){
+        stepYellow= -5;
+    }
+    else if (yellowY===25){
+        stepYellow=5;
+    }
+   
+    processing.text(m,150,50);
+    redY= redY +stepRed;
+    
+    if(processing.time > 4){
+    yellowY= yellowY+stepYellow;
+    }
+    
+    
+    if(processing.time > 3){
+        purpleY = purpleY + stepPurple;
+    }
+    
+    if(processing.time > 2){
+        greenX = greenX + stepGreen;
+    }
+    
+    if(processing.time > 1.5){
+        lightpX = lightpX + stepLightp;
+    }
+    if(processing.time > 2){
+        grayX = grayX + stepGray;
+    }
+    if(processing.time > 4){
+        grayY = grayY + stepGrey;
+    }
+    if(processing.time > 3){
+        orangeX= orangeX + stepOrange;
+    }
+    if(processing.time > 5){
+        orangeY = orangeY + stepOrenge;
+    }
+    if(processing.time > 3.5){
+        tealY = tealY + stepTeal;
+    }
+};
+
+		}
+		var canvas = document.getElementById("canvas1");
+		var p = new Processing(canvas, sketchProc);
+		</SCRIPT>
+	</BODY>
+</HTML>
