@@ -1,0 +1,431 @@
+
+ <HTML>
+
+	<HEAD>
+
+		<SCRIPT SRC="p5.js"></SCRIPT>
+
+	</HEAD>
+
+	<BODY>
+
+		<SCRIPT ID="script" TYPE="text/javascript">
+
+			var x, y, worda, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6, x7, y7, x8, y8, x9, y9, x10, y10, img2, img, img3, img4, img5, img6, img7, img8, img9, img10, stepImg, stepImg3, stepImg4, stepImg5, stepImg6, stepImg7, stepImg8, stepImg9, stepImg10, score, time, time1, startSec, flag, level;
+
+			function setup(){
+
+				createCanvas( 1250, 600 );
+
+				x = floor( random( 100, 600 ) );
+				y = 20;
+
+				worda=0;
+
+				x2 = 200;
+				y2 = 200;
+
+				x3 = floor( random( 100, 600 ) );
+				y3 = 600;
+
+				x4 = floor( random( 100, 600 ) );
+				y4 = 20;
+
+				x5 = floor( random( 0, 600 ) );
+				y5 = 600;
+
+				x6 = floor( random( 0, 600) );
+				y6 = 20;
+
+				x7 = floor( random( 0, 600 ) );
+				y7 = 20;
+
+				x8 = floor( random( 0, 600 ) );
+				y8 = 20;
+
+				x9 = floor( random( 0, 600 ) );
+				y9 = 600;
+				
+				x10 = floor( random( 0, 600 ) );
+				y10 = 20;
+
+				img = loadImage( "image1.jpg" );
+				img2 = loadImage( "image10.jpg");
+				img3 = loadImage( "image3.jpg" );
+				img4 = loadImage( "image4.jpg" );
+				img5 = loadImage( "image5.jpg" );
+				img6 = loadImage( "image6.jpg" );
+				img7 = loadImage( "image7.jpg" );
+				img8 = loadImage( "image2.jpg" );
+				img9 = loadImage("image8.jpg");
+				img10 = loadImage("image11.jpg");
+
+				stepImg = 5;
+				
+				stepImg3 = 5;
+				stepImg4 = 5;
+				stepImg5 = 5;
+				stepImg6 = 5;
+				stepImg7 = 5;
+				stepImg8 = 5;
+				
+stepImg9 = 5;
+				stepImg10 = 5;
+				
+				score = 0;
+				time = millis();
+				flag = 0;
+				level = 1;
+			}
+
+			function draw(){
+
+				if( level === 1 )
+
+					levelOne();
+		
+				else
+					levelTwo();
+
+			}
+
+			function title(){
+				textSize(100);
+				fill(250, 245, 250);
+				text( "HUNT THE PONIES!!", worda , 500 );
+				worda = worda + 2;
+			}
+
+			function levelOne(){
+			
+		//Move main character with arrow keys
+				if(keyIsDown(LEFT_ARROW))
+
+					x2 = x2-20;
+
+				if(keyIsDown(RIGHT_ARROW))
+
+					x2 = x2+20;
+
+				if(keyIsDown(UP_ARROW))
+
+					y2 = y2-20;
+
+				if(keyIsDown(DOWN_ARROW))
+
+					y2 = y2+20;
+
+				background(255, 127, 174);
+				
+				title();
+				
+				//the time given for the game.
+   				fill(0, 187, 255);
+
+  				if(time>30000){
+ 
+    					 textSize(30);
+
+       					 text("YOU RAN OUT OF TIME!!", 10,320, 1000, 1000);
+
+ 					 }  
+				
+				image( img, x, y, 75, 100 );
+				image( img2, x2, y2, 120, 150 );
+				image( img3, x3, y3, 50, 75 );
+				image( img4, x4, y4, 100, 75 );
+				image( img5, x5, y5, 100, 100 );
+				image( img9, x9, y9, 100, 100 );
+				image( img10, x10, y10, 100, 75 );
+
+				//Display Score.
+				textSize(40);
+				fill(250, 245, 250);
+				text( "Score: " + score, 5 , 35 );
+
+				//For the ponies to move within the canvas.
+				if( millis() - time >= 500 && flag == 0 || 1 && y == 0)
+				{
+					stepImg = 5;
+					stepImg4 = 5;
+					stepImg10 = 5;
+					stepImg3 = -5;
+					stepImg5 = -5;
+					stepImg9 = -5;
+
+					time = millis();
+					flag = 0;
+				}
+				
+				else if (y == 600)
+				
+				{
+					stepImg = -5;
+					stepImg4 = -5;
+					stepImg10 = -5;
+					stepImg3 = 5;
+					stepImg5 = 5;
+					stepImg9 = 5;
+				}
+
+				//movement of ponies.
+				if(time>2){
+				y = y + stepImg;
+				}
+				if(time>2.5){
+				y4 = y4 + stepImg4;
+				y10 = y10 + stepImg10;
+				}
+				if(time>2.5){
+				y3 = y3 + stepImg3;
+				}
+				if(time>2){
+				y5 = y5 + stepImg5;
+				y9 = y9 + stepImg9;
+				}
+
+			//random location for ponies.
+				if (flag == 1)
+				{
+
+				x = floor( random( 100, 600 ) );
+				y = 20;
+
+				x3 = floor( random( 100, 600 ) );
+				y3 = 600;
+
+				x4 = floor( random( 100, 600 ) );
+				y4 = 20;
+				
+				x10 = floor( random( 100, 600 ) );
+				y10 = 20;
+
+				x5 = floor( random( 0, 600 ) );
+				y5 = 600;
+
+				x9 = floor( random( 0, 600 ) );
+				y9 = 600;
+
+				time = millis();
+				flag = 0;
+				}
+				eat();
+			}
+
+
+			function levelTwo(){
+
+		//move main character with arrow keys.
+				if(keyIsDown(LEFT_ARROW))
+
+					x2 = x2-20;
+
+				if(keyIsDown(RIGHT_ARROW))
+
+					x2 = x2+20;
+
+				if(keyIsDown(UP_ARROW))
+
+					y2 = y2-20;
+
+				if(keyIsDown(DOWN_ARROW))
+
+					y2 = y2+20;
+
+				background(251, 255, 127);
+
+				image( img5, x5, y5, 75, 100 );
+				image( img2, x2, y2, 120, 150 );
+				image( img6, x6, y6, 50, 75 );
+				image( img7, x7, y7, 100, 75 );
+				image( img8, x8, y8, 100, 100 );
+				image( img9, x9, y9, 100, 100 );
+				image( img10, x10, y10, 100, 75 );
+
+				//Display score.
+				textSize(40);
+				fill(250, 245, 250);
+				text( "Score: " + score, 5 , 35 );
+
+				//the time given for the game.
+   				fill(0, 187, 255);
+
+  				if(time>30000){
+ 
+    					 textSize(30);
+
+       					 text("YOU RAN OUT OF TIME!!", 10,320, 1000, 1000);
+
+ 					 }  
+
+			//For the ponies to move within the canvas.
+				if( millis() - time >= 500 && flag == 0 || 1 && y == 20)
+				{
+					stepImg8 = 5;
+					stepImg6 = 5;
+					stepImg10 = 5;
+					stepImg7 = 5;
+					stepImg5 = -5;
+					stepImg9 = -5;
+
+					time = millis();
+					flag = 0;
+				}
+				else if (y == 600)
+				
+				{
+					stepImg8 = -5;
+					stepImg6 = -5;
+					stepImg10 = -5;
+					stepImg7 = -5;
+					stepImg5 = 5;
+					stepImg9 = 5;
+				}
+				
+				//movement of ponies.
+				if(time>2){
+				y8 = y8 + stepImg8;
+				}
+				if(time>2.5){
+				y6 = y6 + stepImg6;
+				y10 = y10 + stepImg10;
+				}
+				if(time>2.5){
+				y7 = y7 + stepImg7;
+				}
+				if(time>2){
+				y5 = y5 + stepImg5;
+				y9 = y9 + stepImg9;
+				}
+
+			//random location for ponies.
+				if (flag == 1)
+				{
+
+				x5 = floor( random( 0, 600 ) );
+				y5 = 600;
+
+				x6 = floor( random( 0, 600 ) );
+				y6 = 20;
+
+				x7 = floor( random( 0, 600 ) );
+				y7 = 20;
+
+				x8 = floor( random( 0, 600 ) );
+				y8 = 20;
+
+				x9 = floor( random( 0, 600 ) );
+				y9 = 600;
+		
+				x10 = floor( random( 100, 600 ) );
+				y10 = 20;
+
+				time = millis();
+				flag = 0;
+				}
+				
+				eat2();
+			}
+		//Scoring logic.
+			function eat(){
+
+				if( flag === 0 && x2 <= x && x2+120 >= x  && y2 <= y && y2+150 >= y )
+				{
+					score++;
+					flag = 1;
+				}
+
+				if( flag === 0 && x2 <= x3 && x2+50 >= x3  && y2 <= y3 && y2+75 >= y3 )
+				{
+					score++;
+					flag = 1;
+				}
+
+				if( flag === 0 && x2 <= x4 && x2+100 >= x4  && y2 <= y4 && y2+75 >= y4 )
+				{
+					score = score + 2;
+					flag = 1;
+				}
+
+				if( flag === 0 && x2 <= x5 && x2+100 >= x5  && y2 <= y5 && y2+100 >= y5 )
+				{
+					score = score + 2;
+					flag = 1;
+				}
+				if( flag === 0 && x2 <= x9 && x2+100 >= x9  && y2 <= y9 && y2+100 >= y9 )
+				{
+					score = score - 2;
+					flag = 1;
+				}
+				if( flag === 0 && x2 <= x10 && x2+100 >= x10  && y2 <= y10 && y2+100 >= y10 )
+				{
+					score = score - 2;
+					flag = 1;
+				}
+
+				if(score === 0){
+					textSize(40);
+					fill(255, 15, 15);
+					text( "WATCH OUT FOR THE EVIL CHARACTERS!", 50 , 600 );	
+				}
+
+				if (score === 10 ){
+					level = 2;
+				}
+			}
+
+			function eat2(){
+	
+				if( flag === 0 && x2 <= x6 && x2+50 >= x6  && y2 <= y6 && y2+75 >= y6 )
+				{
+					score++;
+					flag = 1;
+				}
+
+				if( flag === 0 && x2 <= x7 && x2+100 >= x7  && y2 <= y7 && y2+75 >= y7 )
+				{
+					score++;
+					flag = 1;
+				}
+
+				if( flag === 0 && x2 <= x8 && x2+100 >= x8  && y2 <= y8 && y2+75 >= y8 )
+				{
+					score = score + 2;
+					flag = 1;
+				}
+
+				if( flag === 0 && x2 <= x5 && x2+100 >= x5  && y2 <= y4 && y2+100 >= y5 )
+				{
+					score = score + 2;
+					flag = 1;
+				}
+				if( flag === 0 && x2 <= x9 && x2+100 >= x9  && y2 <= y9 && y2+100 >= y9 )
+				{
+					score = score - 2;
+					flag = 1;
+				}
+				if( flag === 0 && x2 <= x10 && x2+100 >= x10  && y2 <= y10 && y2+100 >= y10 )
+				{
+					score = score - 2;
+					flag = 1;
+				}
+
+				if(score >= 20){
+					textSize(50);
+					fill(250, 245, 250);
+					text( "YOU WIN!!!", 800 , 100 );	
+				}
+
+				if(score === 22){
+					textSize(40);
+					fill(250, 245, 250);
+					text( "KEEP PLAYING!", 500 , 500 );	
+				}	
+			}
+
+		</SCRIPT>
+<UL>
+			<LI><A HREF="main.html">Main Page</LI></A>
+</UL>
+	</BODY>
+</HTML>

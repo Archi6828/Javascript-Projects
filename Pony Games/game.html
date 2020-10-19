@@ -1,0 +1,551 @@
+<HTML>
+	<HEAD>
+		<SCRIPT SRC="p5.js"></SCRIPT>
+	</HEAD>
+	<BODY  TEXT=WHITE SIZE=20 LINK=PURPLE VLINK=BLACK>
+
+		<SCRIPT ID="script" TYPE="text/javascript">
+
+
+
+
+var xGOOD, yGOOD, xGOOD1, yGOO1D, xGOOD2, yGOOD2, xGOOD3, yGOOD3, xGOOD4, yGOOD4, xGOOD5, yGOOD5, imgGOOD1, imgGOOD2, imgGOOD3, imgGOOD4, imgGOOD5, xLUNA, yLUNA, xHEART, xBOMB, yBOMB, imgGOOD, imgLUNA, imgHEART, imgBOMB, score, time, level, flag, timer, click;
+
+
+function setup() {
+
+	createCanvas( displayWidth, displayHeight );
+
+	xGOOD = floor( random( 200, displayWidth - 200 ) );
+	yGOOD = floor( random( 200, displayHeight - 200 ) );
+	xLUNA = floor( random( 400, displayWidth - 400 ) );
+	yLUNA = floor( random( 400, displayHeight - 400 ) );
+	xGOOD1 = floor( random( 200, displayWidth - 200 ) );
+	yGOOD1 = floor( random( 200, displayHeight - 200 ) );
+	xGOOD2 = floor( random( 200, displayWidth - 200 ) );
+	yGOOD2 = floor( random( 200, displayHeight - 200 ) );
+	xGOOD3 = floor( random( 200, displayWidth - 200 ) );
+	yGOOD3 = floor( random( 200, displayHeight - 200 ) );
+	xGOOD4 = floor( random( 200, displayWidth - 200 ) );
+	yGOOD4 = floor( random( 200, displayHeight - 200 ) );
+	xGOOD5 = floor( random( 200, displayWidth - 200 ) );
+	yGOOD5 = floor( random( 200, displayHeight - 200 ) );
+
+	xBOMB = [100, 500, 900, 1300];
+	yBOMB = [0, 0, 0, 0];
+
+	xHEART = 40;
+
+
+
+	imgGOOD = loadImage( "image1.jpg" );
+	imgGOOD1 = loadImage( "image2.jpg" );
+	imgGOOD2 = loadImage( "image3.jpg" );
+	imgGOOD3 = loadImage( "image4.jpg" );
+	imgGOOD4 = loadImage( "image5.jpg" );
+	imgGOOD5 = loadImage( "image6.jpg" );
+	imgLUNA = loadImage( "image8.jpg" );
+	imgHEART = loadImage( "heart.jpg" );
+	imgBOMB = loadImage( "bomb.jpg" );
+
+	score = 0;
+	time = millis();
+	level = 0;
+	flag = 0;
+	click = 0;
+
+	startTime = second();
+
+
+}
+
+
+
+
+function draw() {
+
+	if( level === 0 )
+	Starting();
+
+	if( level === 1 )
+	levelOne();
+
+	if( level === 1.5 )
+	lost();
+
+	if( level === 2 )
+	levelTwo();
+
+timer = second() - startTime;
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+function Starting() {
+
+
+fill( 200, 200, 200 );
+textSize( 50 );
+text( "Click here to start! Warrior!", 350, 250 );
+
+fill( 200, 200, 200 );
+rect( 450, 250, 100, 50 );
+
+if( mouseIsPressed && mouseX > 450 && mouseX < 550 && mouseY > 250 && mouseY < 350 ){
+
+level = 1; 
+
+}
+
+
+}
+
+
+
+
+
+
+
+function levelOne() {
+
+background( 200, 200, 255 );
+
+
+
+
+textSize( 40 );
+text( "Score: " + score, 5, 30 );
+text( "Level: " + level, 5, 70 );
+text( "Time: " + timer, 5, 115 );
+
+
+
+
+
+
+
+
+
+
+
+if( millis() - time >= 1 && flag === 0){
+
+image ( imgGOOD, xGOOD, yGOOD, 100, 100 );
+image ( imgLUNA, xLUNA, yLUNA, 100, 100 );
+image ( imgGOOD1, xGOOD1, yGOOD1, 100, 100 );
+image ( imgGOOD2, xGOOD2, yGOOD2, 100, 100 );
+image ( imgGOOD3, xGOOD3, yGOOD3, 100, 100 );
+
+xGOOD = xGOOD + 1;
+yGOOD = yGOOD + 1;
+xLUNA = xLUNA + 1;
+yLUNA = yLUNA + 1;
+xGOOD1 = xGOOD1 + 1;
+yGOOD1 = yGOOD1 + 1;
+xGOOD2 = xGOOD2 + 1;
+yGOOD2 = yGOOD2 + 1;
+xGOOD3 = xGOOD3 + 1;
+yGOOD3 = yGOOD3 + 1;
+
+time = millis();
+flag = 0;
+
+}
+
+
+
+if( flag === 1 ){
+
+	xGOOD = floor( random( 200, displayWidth - 200 ) );
+	yGOOD = floor( random( 200, displayHeight - 200 ) );
+	xLUNA = floor( random( 400, displayWidth - 400 ) );
+	yLUNA = floor( random( 400, displayHeight - 400 ) );
+	xGOOD1 = floor( random( 200, displayWidth - 200 ) );
+	yGOOD1 = floor( random( 200, displayHeight - 200 ) );
+	xGOOD2 = floor( random( 200, displayWidth - 200 ) );
+	yGOOD2 = floor( random( 200, displayHeight - 200 ) );
+	xGOOD3 = floor( random( 200, displayWidth - 200 ) );
+	yGOOD3 = floor( random( 200, displayHeight - 200 ) );
+
+time = millis();
+flag = 0;
+
+}
+
+
+
+kill1();
+
+fill(255, 255, 255);
+strokeWeight( 3 );
+line( mouseX-45, mouseY, mouseX+45, mouseY );
+line( mouseX, mouseY-45, mouseX, mouseY+45 );
+noFill();
+ellipse( mouseX, mouseY, 15, 15 );
+ellipse( mouseX, mouseY, 30, 30 );
+
+if( xLUNA >= displayWidth || yLUNA >= displayHeight ){
+
+level = 1.5;
+
+}
+
+
+
+}
+
+
+function lost(){
+
+background( 255, 230, 255 );
+fill( 0, 0, 0 );
+textSize( 40 );
+text( "Sorry...But the chances are used.", 400, 400 );
+fill( 230, 240, 10 );
+rect( 500, 600, 200, 100, 20 );
+
+
+if(mouseIsPressed && mouseX > 500 && mouseX < 700 && mouseY > 600 && mouseY < 700 ){
+
+level = 0;
+
+}
+
+
+}
+
+
+
+
+
+function kill1(){
+
+if( mouseIsPressed && mouseX >= xGOOD && mouseX <= xGOOD + 100 && mouseY >= yGOOD && mouseY <= yGOOD + 100 && flag === 0){
+
+score = score - 1;
+
+flag = 1;
+
+click++;
+
+
+}
+
+if( mouseIsPressed && mouseX >= xGOOD1 && mouseX <= xGOOD1 + 100 && mouseY >= yGOOD1 && mouseY <= yGOOD1 + 100 && flag === 0){
+
+score = score - 1;
+
+flag = 1;
+
+click++;
+
+
+}
+
+if( mouseIsPressed && mouseX >= xGOOD2 && mouseX <= xGOOD2 + 100 && mouseY >= yGOOD2 && mouseY <= yGOOD2 + 100 && flag === 0){
+
+score = score - 1;
+
+flag = 1;
+
+click++;
+
+
+}
+
+if( mouseIsPressed && mouseX >= xGOOD3 && mouseX <= xGOOD3 + 100 && mouseY >= yGOOD3 && mouseY <= yGOOD3 + 100 && flag === 0){
+
+score = score - 1;
+
+flag = 1;
+
+click++;
+
+
+}
+
+
+
+
+if( mouseIsPressed && mouseX >= xLUNA && mouseX <= xLUNA + 100 && mouseY >= yLUNA && mouseY <= yLUNA + 100 && flag === 0){
+
+score++;
+
+flag = 1;
+
+click++;
+
+}
+
+
+if( mouseX >= xBOMB[0] && mouseX <= xBOMB[0] + 60 && mouseY >= yBOMB[0] && mouseY <= yBOMB[0] + 60 && flag === 0){
+
+score = score - 5;
+
+}
+
+if ( score >= 2 ){
+
+
+image ( imgBOMB, xBOMB[0], yBOMB[0], 60, 60 );
+yBOMB[0] = yBOMB[0] + 4;
+
+}
+
+if ( score >= 4 ){
+
+
+image ( imgBOMB, xBOMB[1], yBOMB[1], 60, 60 );
+yBOMB[1] = yBOMB[1] + 4;
+
+}
+
+
+
+if ( score >= 5 )
+
+level = 2;
+
+}
+
+
+
+
+
+
+
+function levelTwo() {
+
+
+background( 200, 240, 255 );
+
+textSize( 40 );
+text( "Score: " + score, 5, 30 );
+text( "Level: " + level, 5, 70 );
+text( "Time: " + timer, 5, 115 );
+
+
+
+
+if( millis() - time >= 10 && flag === 0){
+
+image ( imgGOOD, xGOOD, yGOOD, 100, 100 );
+image ( imgLUNA, xLUNA, yLUNA, 100, 100 );
+image ( imgGOOD1, xGOOD1, yGOOD1, 100, 100 );
+image ( imgGOOD2, xGOOD2, yGOOD2, 100, 100 );
+image ( imgGOOD3, xGOOD3, yGOOD3, 100, 100 );
+image ( imgGOOD4, xGOOD4, yGOOD4, 100, 100 );
+image ( imgGOOD5, xGOOD5, yGOOD5, 100, 100 );
+
+
+
+
+
+
+
+
+xGOOD = xGOOD + 1;
+yGOOD = yGOOD + 1;
+xLUNA = xLUNA + 1;
+yLUNA = yLUNA + 1;
+xGOOD1 = xGOOD1 + 1;
+yGOOD1 = yGOOD1 + 1;
+xGOOD2 = xGOOD2 + 1;
+yGOOD2 = yGOOD2 + 1;
+xGOOD3 = xGOOD3 + 1;
+yGOOD3 = yGOOD3 + 1;
+xGOOD4 = xGOOD4 + 1;
+yGOOD4 = yGOOD4 + 1;
+xGOOD5 = xGOOD5 + 1;
+yGOOD5 = yGOOD5 + 1;
+
+
+time = millis();
+flag = 0;
+
+}
+
+
+if( flag === 1 ){
+
+	xGOOD = floor( random( 200, displayWidth - 200 ) );
+	yGOOD = floor( random( 200, displayHeight - 200 ) );
+	xLUNA = floor( random( 400, displayWidth - 400 ) );
+	yLUNA = floor( random( 400, displayHeight - 400 ) );
+	xGOOD1 = floor( random( 200, displayWidth - 200 ) );
+	yGOOD1 = floor( random( 200, displayHeight - 200 ) );
+	xGOOD2 = floor( random( 200, displayWidth - 200 ) );
+	yGOOD2 = floor( random( 200, displayHeight - 200 ) );
+	xGOOD3 = floor( random( 200, displayWidth - 200 ) );
+	yGOOD3 = floor( random( 200, displayHeight - 200 ) );
+	xGOOD4 = floor( random( 200, displayWidth - 200 ) );
+	yGOOD4 = floor( random( 200, displayHeight - 200 ) );
+	xGOOD5 = floor( random( 200, displayWidth - 200 ) );
+	yGOOD5 = floor( random( 200, displayHeight - 200 ) );
+
+
+time = millis();
+flag = 0;
+
+}
+
+kill2();
+
+fill(255, 255, 255);
+strokeWeight( 3 );
+line( mouseX-45, mouseY, mouseX+45, mouseY );
+line( mouseX, mouseY-45, mouseX, mouseY+45 );
+noFill();
+ellipse( mouseX, mouseY, 15, 15 );
+ellipse( mouseX, mouseY, 30, 30 );
+
+
+if( xLUNA >= displayWidth || yLUNA >= displayHeight ){
+
+level = 1.5;
+
+}
+
+}
+
+
+
+
+
+
+
+function kill2() {
+
+if( mouseIsPressed && mouseX >= xGOOD && mouseX <= xGOOD + 100 && mouseY >= yGOOD && mouseY <= yGOOD + 100 && flag === 0){
+
+score = score - 1;
+
+flag = 1;
+
+click++;
+
+
+}
+
+if( mouseIsPressed && mouseX >= xGOOD1 && mouseX <= xGOOD1 + 100 && mouseY >= yGOOD1 && mouseY <= yGOOD1 + 100 && flag === 0){
+
+score = score - 1;
+
+flag = 1;
+
+click++;
+
+
+}
+
+if( mouseIsPressed && mouseX >= xGOOD2 && mouseX <= xGOOD2 + 100 && mouseY >= yGOOD2 && mouseY <= yGOOD2 + 100 && flag === 0){
+
+score = score - 1;
+
+flag = 1;
+
+click++;
+
+
+}
+
+if( mouseIsPressed && mouseX >= xGOOD3 && mouseX <= xGOOD3 + 100 && mouseY >= yGOOD3 && mouseY <= yGOOD3 + 100 && flag === 0){
+
+score = score - 1;
+
+flag = 1;
+
+click++;
+
+
+}
+
+
+if( mouseIsPressed && mouseX >= xGOOD4 && mouseX <= xGOOD4 + 100 && mouseY >= yGOOD4 && mouseY <= yGOOD4 + 100 && flag === 0){
+
+score = score - 1;
+
+flag = 1;
+
+click++;
+
+
+}
+
+if( mouseIsPressed && mouseX >= xGOOD5 && mouseX <= xGOOD5 + 100 && mouseY >= yGOOD5 && mouseY <= yGOOD5 + 100 && flag === 0){
+
+score = score - 1;
+
+flag = 1;
+
+click++;
+
+
+}
+
+
+
+if( mouseIsPressed && mouseX >= xLUNA && mouseX <= xLUNA + 100 && mouseY >= yLUNA && mouseY <= yLUNA + 100 && flag === 0){
+
+score++;
+
+flag = 1;
+
+click++;
+
+}
+
+
+if( mouseX >= xBOMB[0] && mouseX <= xBOMB[0] + 60 && mouseY >= yBOMB[0] && mouseY <= yBOMB[0] + 60 && flag === 0){
+
+score = score - 5;
+
+}
+
+if ( score >= 6 ){
+
+
+image ( imgBOMB, xBOMB[2], yBOMB[2], 60, 60 );
+yBOMB[2] = yBOMB[2] + 4;
+
+}
+
+if ( score >= 10 ){
+
+
+image ( imgBOMB, xBOMB[3], yBOMB[3], 60, 60 );
+yBOMB[3] = yBOMB[3] + 4;
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+</SCRIPT>
+
+<UL>
+			<LI><A HREF="main.html">Main Page</LI></A>
+</UL>
+
+</BODY>
+
+</HTML>
